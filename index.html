@@ -1016,18 +1016,21 @@
     const setActive = (key)=>{
       btns.forEach(b=>b.classList.toggle('on', b.dataset.go===key));
     };
-    const trackIO = new IntersectionObserver((es)=>{
-      es.forEach(e=>{ if(e.isIntersecting){ setActive(e.target.dataset.rail); }});
-    },{threshold:.35});
-    sections.forEach(s=>trackIO.observe(s));
     btns.forEach(b=>b.addEventListener('click',()=>{
       const t = document.querySelector('[data-rail="'+b.dataset.go+'"]');
       if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
     }));
-    // Page progress
+    // Page progress + active section (scroll-position based — immediate response)
     const onProg = ()=>{
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = Math.max(0, Math.min(1, window.scrollY / max));
+      // Find which section crosses the trigger line at 30% of viewport from top
+      const trigger = window.scrollY + window.innerHeight * 0.30;
+      let activeName = sections[0]?.dataset.rail;
+      sections.forEach(s=>{
+        if (s.offsetTop <= trigger) activeName = s.dataset.rail;
+      });
+      if (activeName) setActive(activeName);
       bar.style.setProperty('--pp', (p*100).toFixed(1)+'%');
       pct.textContent = String(Math.round(p*100)).padStart(2,'0');
     };
