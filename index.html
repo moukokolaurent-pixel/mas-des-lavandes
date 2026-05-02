@@ -130,8 +130,6 @@
   .hero{position:relative;height:300vh;color:#f3ead9}
   .hero-sticky{position:sticky;top:0;height:100vh;min-height:640px;overflow:hidden}
   .hero .bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;will-change:transform,opacity;transform-origin:center center}
-  /* video as hero bg — covers like background-size:cover */
-  video.bg{object-fit:cover;object-position:center}
   .hero .bg-1{background-image:url("photos/09-lavande-sunset.jpg")}
   .hero .bg-2{background-image:url("photos/01-mas-pins.jpg");opacity:0}
   .hero .bg-3{background-image:url("photos/02-mas-oliviers.jpg");opacity:0}
@@ -526,9 +524,7 @@
 <!-- HERO (3 viewports) -->
 <section class="hero" id="hero" data-rail="hero" data-screen-label="01 Hero">
   <div class="hero-sticky">
-    <video class="bg bg-1" id="heroBg1" autoplay loop muted playsinline preload="auto" poster="photos/09-lavande-sunset.jpg">
-      <source src="photos/hero-lavender.mp4" type="video/mp4">
-    </video>
+    <div class="bg bg-1" id="heroBg1"></div>
     <div class="bg bg-2" id="heroBg2"></div>
     <div class="bg bg-3" id="heroBg3"></div>
     <div class="hero-veil"></div>
