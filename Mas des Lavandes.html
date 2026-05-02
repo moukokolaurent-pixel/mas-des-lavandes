@@ -130,6 +130,8 @@
   .hero{position:relative;height:300vh;color:#f3ead9}
   .hero-sticky{position:sticky;top:0;height:100vh;min-height:640px;overflow:hidden}
   .hero .bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;will-change:transform,opacity;transform-origin:center center}
+  /* video as hero bg — covers like background-size:cover */
+  video.bg{object-fit:cover;object-position:center}
   .hero .bg-1{background-image:url("photos/09-lavande-sunset.jpg")}
   .hero .bg-2{background-image:url("photos/01-mas-pins.jpg");opacity:0}
   .hero .bg-3{background-image:url("photos/02-mas-oliviers.jpg");opacity:0}
@@ -211,6 +213,20 @@
   .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid rgba(243,234,217,.18);padding-top:32px;margin-top:auto}
   .stat .n{font-family:var(--serif);font-style:italic;font-weight:300;font-size:48px;line-height:1;color:#e8c89b;letter-spacing:-.01em}
   .stat .l{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(243,234,217,.6);margin-top:12px;line-height:1.4}
+
+  /* ---------- Bonjour — interlude des hôtes (entre Mas et Chambres) ---------- */
+  .bonjour{padding:120px var(--gutter);background:var(--cream);max-width:var(--maxw);margin:0 auto}
+  .bonjour-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+  .bonjour-text{display:flex;flex-direction:column}
+  .bonjour-text .eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+  .bonjour-display{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(48px,5.5vw,88px);line-height:.95;letter-spacing:-.02em;color:var(--terra-deep);margin-bottom:32px}
+  .bonjour-text .body{font-family:var(--serif);font-weight:300;font-size:clamp(17px,1.4vw,21px);line-height:1.6;color:var(--ink);margin-bottom:18px;max-width:42ch}
+  .bonjour-text .body em{font-style:italic;color:var(--terra-deep);font-weight:300}
+  .bonjour-signature{margin-top:36px;padding-top:24px;border-top:1px solid var(--rule);font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;color:var(--ink);letter-spacing:.005em}
+  .bonjour-signature small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);font-style:normal;font-weight:500;font-family:var(--sans);margin-top:8px}
+  .bonjour-img{margin:0;position:relative}
+  .bonjour-img img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:var(--radius);box-shadow:var(--shadow-card);transition:box-shadow .6s cubic-bezier(.25,.1,.25,1),transform .6s cubic-bezier(.25,.1,.25,1)}
+  .bonjour-img:hover img{box-shadow:var(--shadow-soft);transform:translateY(-3px)}
 
   /* ---------- 03 chambres horizontal pin ---------- */
   .chambres{position:relative;background:var(--paper)}
@@ -442,6 +458,8 @@
     .chapter-head{grid-template-columns:50px 1fr;gap:14px;margin-bottom:40px}
     .arrival-grid{grid-template-columns:1fr;gap:32px}
     .arrival-img img{aspect-ratio:4/3}
+    .bonjour{padding:80px 24px}
+    .bonjour-grid{grid-template-columns:1fr;gap:32px}
     .split-mas{grid-template-columns:1fr;height:auto}
     .split-mas .pic{min-height:55vh}
     .split-mas .txt{padding:50px 24px}
@@ -508,7 +526,9 @@
 <!-- HERO (3 viewports) -->
 <section class="hero" id="hero" data-rail="hero" data-screen-label="01 Hero">
   <div class="hero-sticky">
-    <div class="bg bg-1" id="heroBg1"></div>
+    <video class="bg bg-1" id="heroBg1" autoplay loop muted playsinline preload="auto" poster="photos/09-lavande-sunset.jpg">
+      <source src="photos/hero-lavender.mp4" type="video/mp4">
+    </video>
     <div class="bg bg-2" id="heroBg2"></div>
     <div class="bg bg-3" id="heroBg3"></div>
     <div class="hero-veil"></div>
@@ -593,6 +613,25 @@
       <div class="stat"><div class="n">5</div><div class="l">chambres uniques</div></div>
       <div class="stat"><div class="n">3 ha</div><div class="l">de jardin &amp; vignes</div></div>
     </div>
+  </div>
+</section>
+
+<!-- BONJOUR — interlude des hôtes (entre Mas et Chambres) -->
+<section class="bonjour" id="bonjour">
+  <div class="bonjour-grid reveal">
+    <div class="bonjour-text">
+      <div class="eyebrow">— Vos hôtes</div>
+      <h2 class="bonjour-display">Bonjour.</h2>
+      <p class="body">Nous avons trouvé le mas en 1998. Il était à l'abandon depuis quinze ans, les volets tombaient, les ronces avaient gagné. On a dit oui à la première visite, pour des raisons qu'on n'a jamais bien expliquées.</p>
+      <p class="body">Vingt-six ans plus tard, on cuisine pour vous, on dresse la table, on plante des oliviers. <em>Le mas continue.</em></p>
+      <div class="bonjour-signature">
+        — Camille &amp; Pierre Aubertin
+        <small>Hôtes du Mas des Lavandes</small>
+      </div>
+    </div>
+    <figure class="bonjour-img">
+      <img src="photos/13-hosts-camille-pierre.jpg" alt="Camille et Pierre Aubertin, hôtes du Mas des Lavandes">
+    </figure>
   </div>
 </section>
 
