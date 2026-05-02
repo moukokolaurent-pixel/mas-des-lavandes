@@ -936,12 +936,12 @@
     if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
     if (typeof Lenis === 'undefined') return;
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 0.7,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
-      lerp: 0.1
+      lerp: 0.18
     });
     function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
@@ -1041,7 +1041,7 @@
     btns.forEach(b=>b.addEventListener('click',()=>{
       const t = document.querySelector('[data-rail="'+b.dataset.go+'"]');
       if(!t) return;
-      if(window.lenis) window.lenis.scrollTo(t,{duration:1.4});
+      if(window.lenis) window.lenis.scrollTo(t,{duration:0.9});
       else t.scrollIntoView({behavior:'smooth',block:'start'});
     }));
     // Page progress
