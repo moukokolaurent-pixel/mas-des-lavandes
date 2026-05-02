@@ -236,23 +236,27 @@
   .chambres-end .display em{color:var(--terra-deep)}
   .chambres-end .cta{margin-top:32px}
 
-  /* ---------- 04 la table — split-card pattern (mirror of mas) ---------- */
-  .table{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;height:auto;min-height:720px;background:#1c1410;color:#f3ead9;padding:24px;position:relative;overflow:hidden}
-  .table .pic{position:relative;margin:0;overflow:hidden}
-  .table .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.25,.1,.25,1)}
-  .table:hover .pic img{transform:scale(1.04)}
-  .table .txt{padding:64px 56px;display:flex;flex-direction:column;justify-content:space-between;align-self:stretch}
-  .table .chapter-eyebrow{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid rgba(243,234,217,.18)}
+  /* ---------- 04 la table — full-bleed photo + left-aligned editorial overlay ---------- */
+  .table{position:relative;color:#f3ead9;background:#1c1410;overflow:hidden;min-height:100vh}
+  .table-bg{position:absolute;inset:0;background:url("photos/11-table-provencale.jpg") center/cover no-repeat;will-change:transform}
+  /* horizontal veil: dark on left (for text readability), transparent on right (photo prominent) */
+  .table::before{content:"";position:absolute;inset:0;background:
+    linear-gradient(90deg, rgba(28,20,16,.78) 0%, rgba(28,20,16,.5) 35%, rgba(28,20,16,.1) 65%, rgba(28,20,16,0) 100%),
+    linear-gradient(180deg, rgba(28,20,16,.15) 0%, transparent 30%, rgba(28,20,16,.4) 100%);
+    z-index:1;pointer-events:none}
+  .table-inner{position:relative;z-index:2;padding:120px var(--gutter);max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;min-height:100vh}
+  .table-content{max-width:540px}
+  .table .chapter-eyebrow{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid rgba(243,234,217,.25)}
   .table .chapter-eyebrow .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:#e8c89b;letter-spacing:.02em}
-  .table .chapter-eyebrow .label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,234,217,.6);font-weight:500}
-  .table-display{font-family:var(--serif);font-weight:300;font-size:clamp(40px,4.6vw,72px);line-height:1.02;letter-spacing:-.02em;margin-bottom:32px;color:#f3ead9}
+  .table .chapter-eyebrow .label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,234,217,.7);font-weight:500}
+  .table-display{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,82px);line-height:1.02;letter-spacing:-.02em;margin-bottom:32px;color:#f3ead9;text-shadow:0 2px 24px rgba(0,0,0,.4)}
   .table-display em{font-style:italic;color:#e8c89b;font-weight:300}
-  .table .lead{font-family:var(--serif);font-weight:300;font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:#f3ead9;margin-bottom:22px;max-width:38ch}
-  .table .body{color:rgba(243,234,217,.72);font-size:14px;line-height:1.7;max-width:46ch}
-  .table-menu{margin-top:36px;padding-top:28px;border-top:1px solid rgba(243,234,217,.18);display:grid;gap:16px;list-style:none;padding-left:0}
-  .table-menu li{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:#f3ead9;line-height:1.4;display:flex;align-items:baseline;gap:14px}
+  .table .lead{font-family:var(--serif);font-weight:300;font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:#f3ead9;margin-bottom:22px;max-width:38ch;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+  .table .body{color:rgba(243,234,217,.85);font-size:14px;line-height:1.7;max-width:46ch;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+  .table-menu{margin-top:36px;padding-top:28px;border-top:1px solid rgba(243,234,217,.25);display:grid;gap:16px;list-style:none;padding-left:0}
+  .table-menu li{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:#f3ead9;line-height:1.4;display:flex;align-items:baseline;gap:14px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
   .table-menu li::before{content:"";flex:0 0 18px;width:18px;height:1px;background:#e8c89b;transform:translateY(-4px)}
-  .table-resv{margin-top:32px;padding-top:18px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(243,234,217,.55)}
+  .table-resv{margin-top:24px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(243,234,217,.7);text-shadow:0 1px 8px rgba(0,0,0,.4)}
 
   /* ---------- 05 jardin / galerie bento éditorial ---------- */
   .jardin{padding:120px var(--gutter);background:var(--cream);position:relative;max-width:var(--maxw);margin:0 auto}
@@ -441,9 +445,9 @@
     .split-mas .pic{min-height:55vh}
     .split-mas .txt{padding:50px 24px}
     .stat-row{grid-template-columns:1fr 1fr 1fr;gap:14px}
-    .table{grid-template-columns:1fr;height:auto}
-    .table .pic img{aspect-ratio:4/3}
-    .table .txt{padding:48px 24px}
+    .table{min-height:auto}
+    .table-inner{padding:80px 24px;min-height:auto}
+    .table-content{max-width:none}
     .jardin{padding:80px 24px}
     .jardin-head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
     .jardin-marquee{padding:40px 0 60px}
@@ -698,11 +702,9 @@
 
 <!-- 04 LA TABLE -->
 <section class="table" id="table" data-rail="table" data-screen-label="05 La table">
-  <figure class="pic">
-    <img src="photos/11-table-provencale.jpg" alt="Table dressée pour le dîner sous la treille">
-  </figure>
-  <div class="txt">
-    <div>
+  <div class="table-bg" id="tableBg"></div>
+  <div class="table-inner">
+    <div class="table-content">
       <div class="chapter-eyebrow">
         <span class="num">04</span>
         <span class="label">— La table d'hôtes</span>
@@ -710,8 +712,6 @@
       <h2 class="table-display">À sept heures,<br><em>on dresse</em><br>la grande table.</h2>
       <p class="lead">Trois soirs par semaine, Camille cuisine ce que le jardin et le marché de Lourmarin lui ont donné le matin même.</p>
       <p class="body">Table commune sous la treille, rosé du voisin, conversations qui s'étirent jusqu'aux étoiles. Pas de carte, pas de choix — juste la confiance.</p>
-    </div>
-    <div>
       <ul class="table-menu">
         <li>Aubergines confites, ricotta de chèvre</li>
         <li>Pintade au thym, polenta crémeuse</li>
