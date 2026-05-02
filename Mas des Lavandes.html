@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <style>
   :root{
     --ink:#1c1410;
@@ -895,6 +896,23 @@
 </footer>
 
 <script>
+  // Lenis smooth scroll (wheel/touch/anchors, respects reduced-motion)
+  (function(){
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    if (typeof Lenis === 'undefined') return;
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      lerp: 0.1
+    });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    window.lenis = lenis;
+  })();
+
   // Hero scroll-driven animation (300vh hero, 3 panels) — rAF smoothed
   (function(){
     const hero = document.getElementById('hero');
@@ -987,7 +1005,9 @@
     sections.forEach(s=>trackIO.observe(s));
     btns.forEach(b=>b.addEventListener('click',()=>{
       const t = document.querySelector('[data-rail="'+b.dataset.go+'"]');
-      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+      if(!t) return;
+      if(window.lenis) window.lenis.scrollTo(t,{duration:1.4});
+      else t.scrollIntoView({behavior:'smooth',block:'start'});
     }));
     // Page progress
     const onProg = ()=>{
