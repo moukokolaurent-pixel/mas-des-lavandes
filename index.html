@@ -266,15 +266,16 @@
   .chambres-end .cta{margin-top:32px}
 
   /* ---------- 04 la table — full-bleed photo + left-aligned editorial overlay ---------- */
-  .table{position:relative;color:#f3ead9;background:#1c1410;overflow:hidden;min-height:100vh}
-  .table-bg{position:absolute;inset:0;background:url("photos/11-table-provencale.jpg?v=2") center/cover no-repeat;will-change:transform}
+  .table{position:relative;color:#f3ead9;padding:32px var(--gutter);min-height:100vh;background:transparent}
+  .table-bg{position:absolute;inset:0;background:url("photos/11-table-provencale.jpg?v=2") center/cover no-repeat;will-change:transform;z-index:0}
   /* horizontal veil: dark on left (for text readability), transparent on right (photo prominent) */
   .table::before{content:"";position:absolute;inset:0;background:
     linear-gradient(90deg, rgba(28,20,16,.78) 0%, rgba(28,20,16,.5) 35%, rgba(28,20,16,.1) 65%, rgba(28,20,16,0) 100%),
     linear-gradient(180deg, rgba(28,20,16,.15) 0%, transparent 30%, rgba(28,20,16,.4) 100%);
     z-index:1;pointer-events:none}
-  .table-inner{position:relative;z-index:2;padding:120px var(--gutter);max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;min-height:100vh}
-  .table-content{max-width:540px}
+  .table-inner{position:relative;border-radius:28px;overflow:hidden;padding:clamp(60px,8vw,120px) clamp(32px,5vw,72px);max-width:var(--maxw);margin:0 auto;display:flex;align-items:flex-end;min-height:calc(100vh - 64px);isolation:isolate;box-shadow:0 30px 80px -30px rgba(28,20,16,.35),0 1px 0 rgba(243,234,217,.06) inset;background:#1c1410}
+  .table-inner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,20,16,0) 35%,rgba(28,20,16,.55) 100%);z-index:1;pointer-events:none}
+  .table-content{max-width:540px;position:relative;z-index:2}
   .table .chapter-eyebrow{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid rgba(243,234,217,.25)}
   .table .chapter-eyebrow .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:#e8c89b;letter-spacing:.02em}
   .table .chapter-eyebrow .label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,234,217,.7);font-weight:500}
@@ -503,8 +504,8 @@
     .split-mas .pic{min-height:55vh}
     .split-mas .txt{padding:50px 24px}
     .stat-row{grid-template-columns:1fr 1fr 1fr;gap:14px}
-    .table{min-height:auto}
-    .table-inner{padding:80px 24px;min-height:auto}
+    .table{min-height:auto;padding:16px 12px}
+    .table-inner{padding:60px 28px;min-height:auto;border-radius:22px}
     .table-content{max-width:none}
     .jardin{padding:80px 24px}
     .jardin-head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
@@ -783,8 +784,8 @@
 
 <!-- 04 LA TABLE -->
 <section class="table" id="table" data-rail="table" data-screen-label="05 La table">
-  <div class="table-bg" id="tableBg"></div>
   <div class="table-inner">
+    <div class="table-bg" id="tableBg"></div>
     <div class="table-content">
       <div class="chapter-eyebrow">
         <span class="num">04</span>
