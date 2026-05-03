@@ -320,7 +320,26 @@
   .marquee-item .caption .meta{font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,234,217,.7);font-style:normal;font-weight:500;margin-left:4px}
   @keyframes slide-jardin{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 
-  /* ---------- 06 livre d'or / avis ---------- */
+  /* ---------- 06 alentours — bento grid avec glass captions ---------- */
+  .alentours{padding:120px var(--gutter) 100px;background:var(--cream);max-width:var(--maxw);margin:0 auto}
+  .alentours-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:48px;margin-bottom:64px}
+  .alentours-head .eyebrow{color:var(--terra);margin-bottom:18px}
+  .alentours-head .display{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.2vw,36px);line-height:1.1;letter-spacing:-.014em;color:var(--ink);max-width:18ch}
+  .alentours-head .display em{font-style:italic;color:var(--terra-deep);font-weight:300}
+  .alentours-head .lead{font-family:var(--serif);font-weight:300;font-size:clamp(15px,1.1vw,18px);line-height:1.6;color:var(--ink-soft);max-width:42ch}
+  .alentours-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;grid-auto-rows:200px}
+  .alentours-card{position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow-card);transition:box-shadow .6s cubic-bezier(.25,.1,.25,1),transform .6s cubic-bezier(.25,.1,.25,1);text-decoration:none}
+  .alentours-card:hover{box-shadow:var(--shadow-soft);transform:translateY(-3px)}
+  .alentours-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.25,.1,.25,1)}
+  .alentours-card:hover img{transform:scale(1.05)}
+  .alentours-card .meta{position:absolute;left:18px;right:18px;bottom:18px;display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:12px 18px;background:rgba(28,20,16,.55);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-radius:999px;border:1px solid rgba(243,234,217,.15);box-shadow:0 6px 20px -6px rgba(0,0,0,.4);z-index:2}
+  .alentours-card .meta .name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:16px;color:#f3ead9;line-height:1.2;letter-spacing:.005em}
+  .alentours-card .meta .dist{font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,234,217,.72);font-weight:500;flex-shrink:0}
+  .alentours-card.a-hero{grid-column:span 8;grid-row:span 2}
+  .alentours-card.a-portrait{grid-column:span 4;grid-row:span 2}
+  .alentours-card.a-square{grid-column:span 4;grid-row:span 2}
+
+  /* ---------- 07 livre d'or / avis ---------- */
   .avis{padding:140px var(--gutter);background:var(--paper);position:relative;max-width:var(--maxw);margin:0 auto}
   .avis-head{display:grid;grid-template-columns:1fr 1.4fr;align-items:end;gap:48px;margin-bottom:120px}
   .avis-head .display{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.2vw,36px);line-height:1.1;letter-spacing:-.014em;color:var(--ink);max-width:20ch}
@@ -487,6 +506,10 @@
     .jardin-marquee{padding:40px 0 60px}
     .jardin-marquee::before,.jardin-marquee::after{width:60px}
     .marquee-item{width:78vw}
+    .alentours{padding:80px 24px}
+    .alentours-head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
+    .alentours-grid{grid-template-columns:1fr;grid-auto-rows:240px;gap:14px}
+    .alentours-card.a-hero,.alentours-card.a-portrait,.alentours-card.a-square{grid-column:span 1;grid-row:span 1}
     .avis{padding:80px 24px}
     .avis-head{grid-template-columns:1fr;margin-bottom:60px}
     .avis-list{gap:64px}
@@ -532,8 +555,9 @@
   <button data-go="chambres"><span class="idx">04</span><span>Chambres</span></button>
   <button data-go="table"><span class="idx">05</span><span>Table</span></button>
   <button data-go="jardin"><span class="idx">06</span><span>Jardin</span></button>
-  <button data-go="avis"><span class="idx">07</span><span>Avis</span></button>
-  <button data-go="reserve"><span class="idx">08</span><span>Réserver</span></button>
+  <button data-go="alentours"><span class="idx">07</span><span>Alentours</span></button>
+  <button data-go="avis"><span class="idx">08</span><span>Avis</span></button>
+  <button data-go="reserve"><span class="idx">09</span><span>Réserver</span></button>
   <span class="floatnav-divider"></span>
   <span class="floatnav-progress"><span class="bar" id="navBar"></span><span id="navPct">00</span></span>
 </nav>
@@ -825,10 +849,43 @@
   </div>
 </section>
 
-<!-- 06 LIVRE D'OR / AVIS -->
-<section class="avis" id="avis" data-rail="avis" data-screen-label="07 Le livre d'or">
+<!-- 06 ALENTOURS — bento grid avec glass overlays -->
+<section class="alentours" id="alentours" data-rail="alentours" data-screen-label="07 Alentours">
+  <div class="alentours-head reveal">
+    <div>
+      <div class="eyebrow">06 — Lourmarin &amp; alentours</div>
+      <h2 class="display">Le Luberon<br><em>à portée de pas.</em></h2>
+    </div>
+    <p class="lead">Les adresses choisies par Camille &amp; Pierre. À trente minutes maximum, à pied, à vélo ou en voiture — pour goûter au territoire avant de rentrer dîner.</p>
+  </div>
+  <div class="alentours-grid reveal">
+    <article class="alentours-card a-hero">
+      <img src="photos/14-senanque.jpg" alt="Abbaye de Sénanque et son champ de lavande">
+      <div class="meta"><span class="name">Abbaye de Sénanque</span><span class="dist">Cistercienne · 18 km</span></div>
+    </article>
+    <article class="alentours-card a-portrait">
+      <img src="photos/18-marche.jpg" alt="Marché de Lourmarin, étalage de fromages">
+      <div class="meta"><span class="name">Marché de Lourmarin</span><span class="dist">Vendredi · 12 km</span></div>
+    </article>
+    <article class="alentours-card a-square">
+      <img src="photos/15-roussillon.jpg" alt="Le village ocre de Roussillon">
+      <div class="meta"><span class="name">Sentier des Ocres</span><span class="dist">Roussillon · 24 km</span></div>
+    </article>
+    <article class="alentours-card a-square">
+      <img src="photos/17-vignobles.jpg" alt="Vignobles du Luberon">
+      <div class="meta"><span class="name">Caves d'Ansouis</span><span class="dist">Vins du Luberon · 8 km</span></div>
+    </article>
+    <article class="alentours-card a-square">
+      <img src="photos/16-gordes.jpg" alt="Le village perché de Gordes">
+      <div class="meta"><span class="name">Gordes</span><span class="dist">Village perché · 30 min</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- 07 LIVRE D'OR / AVIS -->
+<section class="avis" id="avis" data-rail="avis" data-screen-label="08 Le livre d'or">
   <div class="avis-head reveal">
-    <div class="eyebrow" style="color:var(--terra)">06 — Le livre d'or</div>
+    <div class="eyebrow" style="color:var(--terra)">07 — Le livre d'or</div>
     <h2 class="display">Ce qu'ils en ont<br><em>gardé.</em></h2>
   </div>
 
@@ -864,7 +921,7 @@
   <div class="reserve-grid">
     <div class="reveal">
       <figure class="reserve-fig" style="margin-bottom:36px;aspect-ratio:4/3;overflow:hidden;position:relative;border-radius:var(--radius)"><img src="photos/01-mas-pins.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><figcaption class="reserve-fig-cap">Le mas, sous les pins <span class="meta">Sept.</span></figcaption></figure>
-      <div class="eyebrow" style="color:var(--terra)">07 — Réservation</div>
+      <div class="eyebrow" style="color:var(--terra)">08 — Réservation</div>
       <h2 style="margin-top:18px">Choisissez<br><em>vos dates.</em></h2>
       <p class="lead">Réponse sous 24 h. Acompte de 30 % à la réservation, solde à l'arrivée. Annulation gratuite jusqu'à 7 jours avant.</p>
       <div style="margin-top:40px;display:grid;gap:20px;font-size:14px">
