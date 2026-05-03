@@ -271,18 +271,37 @@
   .table-inner{position:relative;border-radius:28px;overflow:hidden;padding:clamp(56px,7vw,96px) clamp(40px,6vw,80px);max-width:1720px;margin:0 auto;display:flex;align-items:center;min-height:calc(78vh - 64px);isolation:isolate;box-shadow:0 30px 80px -30px rgba(28,20,16,.35),0 1px 0 rgba(243,234,217,.06) inset;background:#1c1410}
   /* single soft veil INSIDE the rounded card: darker on left (for text), fades to clear on right (photo breathes) */
   .table-inner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,20,16,.72) 0%,rgba(28,20,16,.45) 30%,rgba(28,20,16,.1) 60%,rgba(28,20,16,0) 80%);z-index:1;pointer-events:none}
-  .table-content{max-width:540px;position:relative;z-index:2}
+  /* Two-column magazine layout: editorial left, glass menu card right */
+  .table-grid{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:clamp(40px,6vw,80px);width:100%;flex-wrap:wrap}
+  .table-content{flex:0 1 540px;max-width:560px;min-width:0}
   .table .chapter-eyebrow{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid rgba(243,234,217,.25)}
   .table .chapter-eyebrow .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:#e8c89b;letter-spacing:.02em}
   .table .chapter-eyebrow .label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,234,217,.7);font-weight:500}
   .table-display{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.6vw,42px);line-height:1.08;letter-spacing:-.014em;margin-bottom:26px;color:#f3ead9;text-shadow:0 2px 24px rgba(0,0,0,.4)}
   .table-display em{font-style:italic;color:#e8c89b;font-weight:300}
   .table .lead{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.2vw,19px);line-height:1.55;color:#f3ead9;margin-bottom:20px;max-width:42ch;text-shadow:0 1px 12px rgba(0,0,0,.4)}
-  .table .body{color:rgba(243,234,217,.85);font-size:14px;line-height:1.7;max-width:46ch;text-shadow:0 1px 8px rgba(0,0,0,.35)}
-  .table-menu{margin-top:36px;padding-top:28px;border-top:1px solid rgba(243,234,217,.25);display:grid;gap:16px;list-style:none;padding-left:0}
-  .table-menu li{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:#f3ead9;line-height:1.4;display:flex;align-items:baseline;gap:14px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-  .table-menu li::before{content:"";flex:0 0 18px;width:18px;height:1px;background:#e8c89b;transform:translateY(-4px)}
-  .table-resv{margin-top:24px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(243,234,217,.7);text-shadow:0 1px 8px rgba(0,0,0,.4)}
+  .table .body{color:rgba(243,234,217,.85);font-size:14px;line-height:1.7;max-width:46ch;text-shadow:0 1px 8px rgba(0,0,0,.35);margin-bottom:36px}
+
+  /* CTA — cream outlined, inverts on hover */
+  .table-cta{display:inline-flex;align-items:center;gap:14px;padding:14px 26px;background:transparent;color:#f3ead9;font-family:var(--sans);font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;border:1px solid rgba(243,234,217,.55);border-radius:999px;text-decoration:none;transition:background .35s cubic-bezier(.25,.1,.25,1),color .35s,gap .3s,box-shadow .35s,border-color .35s}
+  .table-cta:hover{background:#f3ead9;color:var(--ink);gap:18px;border-color:#f3ead9;box-shadow:0 12px 32px -10px rgba(0,0,0,.5)}
+  .table-cta .arrow{transition:transform .3s}
+  .table-cta:hover .arrow{transform:translateX(4px)}
+
+  /* Glass menu card — sits over the photo on the right */
+  .table-menu-card{flex:0 1 380px;align-self:center;position:relative;background:rgba(28,20,16,.55);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(243,234,217,.14);border-radius:var(--radius);padding:34px 34px 28px;box-shadow:0 30px 80px -24px rgba(0,0,0,.5),inset 0 1px 0 rgba(243,234,217,.08);color:#f3ead9}
+  .tmc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:#e8c89b;box-shadow:0 0 0 0 rgba(232,200,155,.55);animation:tmcPulse 2.4s cubic-bezier(.4,0,.6,1) infinite}
+  @keyframes tmcPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,200,155,.55)}50%{box-shadow:0 0 0 8px rgba(232,200,155,0)}}
+  .tmc-eyebrow{font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,234,217,.85);font-weight:500}
+  .tmc-date{font-family:var(--serif);font-style:italic;font-weight:300;font-size:14px;color:#e8c89b;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(243,234,217,.18)}
+  .tmc-list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+  .tmc-list li{display:grid;grid-template-columns:62px 1fr;align-items:baseline;gap:14px}
+  .course{font-family:var(--sans);font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(243,234,217,.55);font-weight:500}
+  .dish{font-family:var(--serif);font-style:italic;font-weight:300;font-size:15.5px;color:#f3ead9;line-height:1.4}
+  .tmc-foot{display:flex;align-items:baseline;justify-content:space-between;margin-top:22px;padding-top:18px;border-top:1px solid rgba(243,234,217,.18)}
+  .price{font-family:var(--serif);font-weight:300;font-size:28px;color:#f3ead9;letter-spacing:-.01em}
+  .days{font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(243,234,217,.65);font-weight:500}
 
   /* ---------- 05 jardin / galerie bento éditorial ---------- */
   .jardin{padding:120px var(--gutter);background:var(--cream);position:relative;max-width:var(--maxw);margin:0 auto}
@@ -502,7 +521,9 @@
     .stat-row{grid-template-columns:1fr 1fr 1fr;gap:14px}
     .table{min-height:auto;padding:16px 12px}
     .table-inner{padding:60px 28px;min-height:auto;border-radius:22px}
-    .table-content{max-width:none}
+    .table-grid{flex-direction:column;align-items:stretch;gap:36px}
+    .table-content{max-width:none;flex-basis:auto}
+    .table-menu-card{flex-basis:auto;padding:28px 24px;align-self:stretch}
     .jardin{padding:80px 24px}
     .jardin-head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
     .jardin-marquee{padding:40px 0 60px}
@@ -782,20 +803,33 @@
 <section class="table" id="table" data-rail="table" data-screen-label="05 La table">
   <div class="table-inner">
     <div class="table-bg" id="tableBg"></div>
-    <div class="table-content">
-      <div class="chapter-eyebrow">
-        <span class="num">04</span>
-        <span class="label">— La table d'hôtes</span>
+    <div class="table-grid">
+      <div class="table-content reveal">
+        <div class="chapter-eyebrow">
+          <span class="num">04</span>
+          <span class="label">— La table d'hôtes</span>
+        </div>
+        <h2 class="table-display">À sept heures,<br><em>on dresse</em><br>la grande table.</h2>
+        <p class="lead">Trois soirs par semaine, Camille cuisine ce que le jardin et le marché de Lourmarin lui ont donné le matin même.</p>
+        <p class="body">Table commune sous la treille, rosé du voisin, conversations qui s'étirent jusqu'aux étoiles. Pas de carte, pas de choix — juste la confiance.</p>
+        <a href="#reserve" class="table-cta">Réserver une table <span class="arrow">→</span></a>
       </div>
-      <h2 class="table-display">À sept heures,<br><em>on dresse</em><br>la grande table.</h2>
-      <p class="lead">Trois soirs par semaine, Camille cuisine ce que le jardin et le marché de Lourmarin lui ont donné le matin même.</p>
-      <p class="body">Table commune sous la treille, rosé du voisin, conversations qui s'étirent jusqu'aux étoiles. Pas de carte, pas de choix — juste la confiance.</p>
-      <ul class="table-menu">
-        <li>Aubergines confites, ricotta de chèvre</li>
-        <li>Pintade au thym, polenta crémeuse</li>
-        <li>Figues rôties, miel de lavande</li>
-      </ul>
-      <p class="table-resv">Mardi · Jeudi · Samedi — 58 € — sur réservation</p>
+      <aside class="table-menu-card reveal" aria-label="Menu du soir">
+        <div class="tmc-head">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span class="tmc-eyebrow">Au menu ce soir</span>
+        </div>
+        <div class="tmc-date">Prochain service · Jeudi 19h30</div>
+        <ul class="tmc-list">
+          <li><span class="course">Entrée</span><span class="dish">Aubergines confites, ricotta de chèvre</span></li>
+          <li><span class="course">Plat</span><span class="dish">Pintade au thym, polenta crémeuse</span></li>
+          <li><span class="course">Dessert</span><span class="dish">Figues rôties, miel de lavande</span></li>
+        </ul>
+        <div class="tmc-foot">
+          <span class="price">58&nbsp;€</span>
+          <span class="days">Mar · Jeu · Sam</span>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
