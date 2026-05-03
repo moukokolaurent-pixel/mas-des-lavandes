@@ -291,17 +291,22 @@
   .jardin{padding:120px var(--gutter);background:var(--cream);position:relative;max-width:var(--maxw);margin:0 auto}
 
   /* Editorial intro — single column, generous breathing room */
-  .jardin-intro{max-width:780px;margin:0 0 96px 0}
-  .jardin-intro .eyebrow{color:var(--terra);margin-bottom:36px}
-  .jardin-intro .display{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.5vw,40px);line-height:1.1;letter-spacing:-.014em;color:var(--ink);margin-bottom:26px}
+  .jardin-intro{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:48px;margin:0 0 80px 0;max-width:none}
+  .jardin-intro .eyebrow{color:var(--terra);margin-bottom:24px}
+  .jardin-intro .display{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.5vw,40px);line-height:1.1;letter-spacing:-.014em;color:var(--ink)}
   .jardin-intro .display em{font-style:italic;font-weight:300;color:var(--terra-deep)}
-  .jardin-intro .prose{font-family:var(--serif);font-weight:300;font-size:clamp(17px,1.3vw,21px);line-height:1.6;letter-spacing:-.005em;color:var(--ink);margin-bottom:28px;max-width:42ch}
-  .jardin-intro .coda{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(16px,1.3vw,20px);line-height:1.55;color:var(--ink-soft);letter-spacing:.005em;max-width:42ch}
+  .jardin-intro .right{display:flex;flex-direction:column;align-items:flex-start}
+  .jardin-intro .prose{font-family:var(--serif);font-weight:300;font-size:clamp(17px,1.3vw,21px);line-height:1.6;letter-spacing:-.005em;color:var(--ink);margin-bottom:20px;max-width:46ch}
+  .jardin-intro .coda{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(16px,1.3vw,20px);line-height:1.55;color:var(--ink-soft);letter-spacing:.005em;max-width:46ch;margin-bottom:32px}
   .jardin-intro .coda em{color:var(--terra-deep);font-style:italic}
+  .jardin-intro .cta-reserve{display:inline-flex;align-items:center;gap:14px;padding:14px 26px;background:transparent;color:var(--ink);font-family:var(--sans);font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;border:1px solid var(--ink);border-radius:999px;transition:background .35s cubic-bezier(.25,.1,.25,1),color .35s,gap .3s,box-shadow .35s;text-decoration:none}
+  .jardin-intro .cta-reserve:hover{background:var(--ink);color:var(--cream);gap:18px;box-shadow:0 10px 30px -10px rgba(28,20,16,.35)}
+  .jardin-intro .cta-reserve span.arrow{transition:transform .3s}
+  .jardin-intro .cta-reserve:hover span.arrow{transform:translateX(4px)}
   @media (max-width:900px){
-    .jardin-intro{margin-bottom:56px}
-    .jardin-intro .display{margin-bottom:36px}
-    .jardin-intro .prose{margin-bottom:24px}
+    .jardin-intro{grid-template-columns:1fr;margin-bottom:56px;gap:24px}
+    .jardin-intro .display{margin-bottom:0}
+    .jardin-intro .prose{margin-bottom:18px}
   }
 
   /* Horizontal infinite photo marquee — autopilot loop */
@@ -801,10 +806,15 @@
 <!-- 05 JARDIN / GALERIE -->
 <section class="jardin" id="jardin" data-rail="jardin" data-screen-label="06 Le jardin">
   <div class="jardin-intro reveal">
-    <div class="eyebrow">05 — Dehors</div>
-    <h2 class="display">Tout<br><em>commence.</em></h2>
-    <p class="prose">L'oliveraie centenaire. Le potager nourricier. La piscine en pierre sèche. Les hamacs sous les pins, la treille du déjeuner, et un chien qui dort à l'ombre.</p>
-    <p class="coda">Trois hectares clos — <em>vous décidez du rythme.</em></p>
+    <div>
+      <div class="eyebrow">05 — Dehors</div>
+      <h2 class="display">Tout<br><em>commence.</em></h2>
+    </div>
+    <div class="right">
+      <p class="prose">L'oliveraie centenaire. Le potager nourricier. La piscine en pierre sèche. Les hamacs sous les pins, la treille du déjeuner, et un chien qui dort à l'ombre.</p>
+      <p class="coda">Trois hectares clos — <em>vous décidez du rythme.</em></p>
+      <a href="#reserve" class="cta-reserve">Réserver votre séjour <span class="arrow">→</span></a>
+    </div>
   </div>
   <div class="jardin-marquee reveal">
     <div class="marquee-track">
