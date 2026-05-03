@@ -178,8 +178,14 @@
   .chapter-title em{font-style:italic;color:var(--terra-deep)}
 
   /* ---------- 01 arrival — composed editorial grid ---------- */
+  /* Warm gradient bg so the glass band has something to blur/saturate */
+  #arrival{position:relative;background:linear-gradient(135deg,#fbf5e7 0%,#f6ecd2 50%,#f3e8ce 100%);overflow:hidden}
+  #arrival::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 18% 82%,rgba(232,200,155,.28) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 82% 18%,rgba(184,90,58,.10) 0%,transparent 60%);pointer-events:none;z-index:0}
+  #arrival > *{position:relative;z-index:1}
   .arrival-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
   .arrival-text{display:flex;flex-direction:column}
+  /* Glass band wraps the section header — title + texts ressort visuellement sur le dégradé chaud */
+  .arrival-glass{background:rgba(254,250,242,.55);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);border:1px solid rgba(184,140,90,.18);border-radius:var(--radius);padding:clamp(28px,3vw,44px);box-shadow:0 24px 56px -22px rgba(122,80,40,.20),inset 0 1px 0 rgba(255,255,255,.55)}
   .arrival-text .chapter-eyebrow{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
   .arrival-text .chapter-eyebrow .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:var(--terra);letter-spacing:.02em}
   .arrival-text .chapter-eyebrow .label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
@@ -242,16 +248,16 @@
 
   /* ---------- 03 chambres horizontal pin ---------- */
   .chambres{position:relative;background:var(--paper)}
-  .chambres-pin{position:relative;height:380vh}
+  .chambres-pin{position:relative;height:300vh}
   .chambres-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:stretch}
   .chambres-track{display:flex;height:100%;will-change:transform}
-  .chambres-intro{flex:0 0 38vw;padding:14vh 50px 50px 60px;display:flex;flex-direction:column;justify-content:space-between}
+  .chambres-intro{flex:0 0 34vw;padding:14vh 40px 50px 50px;display:flex;flex-direction:column;justify-content:space-between}
   .chambres-intro .display{font-size:clamp(24px,2.4vw,38px);line-height:1.1;max-width:14ch}
   .chambres-intro .display em{color:var(--terra-deep)}
   .chambres-intro .body{margin-top:24px;max-width:48ch}
   .chambres-intro-foot{display:flex;align-items:end;justify-content:space-between;gap:24px;border-top:1px solid var(--rule);padding-top:18px}
-  .chambre-card{flex:0 0 44vw;height:100%;padding:7vh 24px;display:grid;grid-template-rows:auto 1fr auto;gap:20px}
-  .chambre-photo{position:relative;height:100%;min-height:0;overflow:hidden}
+  .chambre-card{flex:0 0 28vw;height:100%;padding:6vh 18px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+  .chambre-photo{position:relative;aspect-ratio:1/1;width:100%;overflow:hidden}
   .chambre-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s ease}
   .chambre-card:hover .chambre-photo img{transform:scale(1.05)}
   .chambre-photo .badge{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);color:var(--ink);padding:8px 14px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border-radius:999px;border:1px solid rgba(255,255,255,.55);box-shadow:0 4px 16px -4px rgba(0,0,0,.20)}
@@ -553,8 +559,8 @@
     .chambres-stage{position:static;height:auto;display:block}
     .chambres-track{flex-direction:column;gap:30px;padding:60px 24px}
     .chambres-intro{flex:none;padding:0}
-    .chambre-card{flex:none;height:auto;padding:0}
-    .chambre-photo{height:60vh}
+    .chambre-card{flex:none;height:auto;padding:0;justify-content:flex-start}
+    .chambre-photo{aspect-ratio:1/1;height:auto;width:100%}
     .chambres-end{flex:none;padding:60px 24px}
   }
 </style>
@@ -633,7 +639,7 @@
 <!-- 01 ARRIVAL -->
 <section class="chapter" id="arrival" data-rail="arrival" data-screen-label="02 L'arrivée">
   <div class="arrival-grid reveal">
-    <div class="arrival-text">
+    <div class="arrival-text arrival-glass">
       <div class="chapter-eyebrow">
         <span class="num">01</span>
         <span class="label">— L'arrivée</span>
@@ -744,7 +750,7 @@
 
         <article class="chambre-card">
           <div class="chambre-photo">
-            <img loading="lazy" decoding="async" src="photos/05-terrasse-escalier.jpg" alt="Chambre Cyprès">
+            <img loading="lazy" decoding="async" src="photos/21-chambre-feu.jpg" alt="Chambre Cyprès">
             <span class="badge">№ 03</span>
           </div>
           <div class="chambre-meta">
@@ -759,7 +765,7 @@
 
         <article class="chambre-card">
           <div class="chambre-photo">
-            <img loading="lazy" decoding="async" src="photos/03-mas-facade.jpg" alt="Chambre Lavande">
+            <img loading="lazy" decoding="async" src="photos/19-chambre-lin.jpg" alt="Chambre Lavande">
             <span class="badge">№ 04</span>
           </div>
           <div class="chambre-meta">
@@ -774,7 +780,7 @@
 
         <article class="chambre-card">
           <div class="chambre-photo">
-            <img loading="lazy" decoding="async" src="photos/02-mas-oliviers.jpg" alt="Chambre Pigeonnier">
+            <img loading="lazy" decoding="async" src="photos/20-chambre-poutres.jpg" alt="Chambre Pigeonnier">
             <span class="badge">№ 05</span>
           </div>
           <div class="chambre-meta">
