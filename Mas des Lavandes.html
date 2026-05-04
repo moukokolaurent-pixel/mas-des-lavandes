@@ -469,15 +469,15 @@
     .trust-stats .stat .num{font-size:30px}
   }
 
-  /* ---------- AVIS HEADER — Google rating prominent ---------- */
-  .avis-rating-band{display:flex;align-items:center;gap:32px;margin-bottom:64px;padding:24px 32px;background:rgba(28,20,16,.04);border-left:3px solid var(--terra);border-radius:var(--radius-sm);flex-wrap:wrap}
-  .avis-rating-band .stars{font-size:18px;letter-spacing:3px;color:var(--terra)}
-  .avis-rating-band .num{font-family:var(--serif);font-weight:300;font-size:32px;line-height:1;color:var(--ink);letter-spacing:-.01em}
-  .avis-rating-band .num em{font-style:italic;font-size:18px;color:var(--ink-soft);margin-left:2px}
-  .avis-rating-band .verified{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
-  .avis-rating-band .verified::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--terra);color:#fff;font-size:11px;font-weight:600}
-  .avis-rating-band .ext{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px;transition:gap .3s,color .3s,border-color .3s}
-  .avis-rating-band .ext:hover{color:var(--terra-deep);border-color:var(--terra-deep);gap:12px}
+  /* ---------- AVIS HEADER — Google rating prominent (on dark warm bg) ---------- */
+  .avis-rating-band{display:flex;align-items:center;gap:32px;margin-bottom:80px;padding:22px 30px;background:rgba(243,234,217,.05);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);border:1px solid rgba(243,234,217,.12);border-left:3px solid #e8c89b;border-radius:var(--radius-sm);flex-wrap:wrap}
+  .avis-rating-band .stars{font-size:18px;letter-spacing:3px;color:#e8c89b}
+  .avis-rating-band .num{font-family:var(--serif);font-weight:300;font-size:32px;line-height:1;color:#f3ead9;letter-spacing:-.01em}
+  .avis-rating-band .num em{font-style:italic;font-size:18px;color:rgba(243,234,217,.7);margin-left:2px}
+  .avis-rating-band .verified{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(243,234,217,.75)}
+  .avis-rating-band .verified::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#e8c89b;color:var(--ink);font-size:11px;font-weight:600}
+  .avis-rating-band .ext{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#e8c89b;border-bottom:1px solid #e8c89b;padding-bottom:2px;transition:gap .3s,color .3s,border-color .3s}
+  .avis-rating-band .ext:hover{color:#fff;border-color:#fff;gap:12px}
 
   /* ---------- FAQ — accordion ---------- */
   .faq{padding:120px var(--gutter);max-width:var(--maxw);margin:0 auto}
@@ -537,27 +537,30 @@
   .footer-legal a{transition:color .3s}
   .footer-legal a:hover{color:#e8c89b}
 
-  /* ---------- 07 livre d'or / avis ---------- */
-  .avis{padding:140px var(--gutter);background:var(--paper);position:relative;max-width:var(--maxw);margin:0 auto}
-  .avis-head{display:grid;grid-template-columns:1fr 1.4fr;align-items:end;gap:48px;margin-bottom:120px}
-  .avis-head .display{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.2vw,36px);line-height:1.1;letter-spacing:-.014em;color:var(--ink);max-width:20ch}
-  .avis-head .display em{font-style:italic;font-weight:300;color:var(--terra-deep)}
-  .avis-list{display:flex;flex-direction:column;gap:140px}
+  /* ---------- 07 livre d'or / avis — DARK WARM moody section (contrast break) ---------- */
+  .avis{padding:140px var(--gutter);background:#1c1410;color:#f3ead9;position:relative;max-width:none;margin:0;overflow:hidden}
+  .avis::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 15% 10%,rgba(232,200,155,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 45% at 85% 90%,rgba(184,90,58,.10) 0%,transparent 65%);pointer-events:none}
+  .avis > *{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto}
+  .avis-head{display:grid;grid-template-columns:1fr 1.4fr;align-items:end;gap:48px;margin-bottom:80px}
+  .avis-head .eyebrow{color:#e8c89b !important}
+  .avis-head .display{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.2vw,36px);line-height:1.1;letter-spacing:-.014em;color:#f3ead9;max-width:20ch}
+  .avis-head .display em{font-style:italic;font-weight:300;color:#e8c89b}
+  .avis-list{display:flex;flex-direction:column;gap:120px}
   .avis-item{display:grid;grid-template-columns:repeat(12,1fr);column-gap:32px;align-items:end}
-  .avis-item .quote{margin:0;grid-column:1/9;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(19px,1.9vw,32px);line-height:1.35;letter-spacing:-.008em;color:var(--ink);position:relative}
-  .avis-item .quote::before{content:"« ";color:var(--terra)}
-  .avis-item .quote::after{content:" »";color:var(--terra)}
+  .avis-item .quote{margin:0;grid-column:1/9;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(19px,1.9vw,32px);line-height:1.35;letter-spacing:-.008em;color:#f3ead9;position:relative}
+  .avis-item .quote::before{content:"« ";color:#e8c89b}
+  .avis-item .quote::after{content:" »";color:#e8c89b}
   .avis-item .meta{grid-column:10/13;align-self:end;padding-bottom:6px}
-  .avis-item .meta .author{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.2}
-  .avis-item .meta .from{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);display:flex;align-items:baseline;gap:10px}
-  .avis-item .meta .from::before{content:"";display:inline-block;width:18px;height:1px;background:var(--terra);transform:translateY(-3px);flex-shrink:0}
+  .avis-item .meta .author{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:#f3ead9;margin-bottom:8px;line-height:1.2}
+  .avis-item .meta .from{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:rgba(243,234,217,.65);display:flex;align-items:baseline;gap:10px}
+  .avis-item .meta .from::before{content:"";display:inline-block;width:18px;height:1px;background:#e8c89b;transform:translateY(-3px);flex-shrink:0}
 
   /* alternate spread: meta left small / quote right wide */
   .avis-item.flip{align-items:start}
   .avis-item.flip .meta{grid-column:1/4;text-align:right;padding:60px 12px 0 0}
   .avis-item.flip .meta .from{justify-content:flex-end}
   .avis-item.flip .meta .from::before{display:none}
-  .avis-item.flip .meta .from::after{content:"";display:inline-block;width:18px;height:1px;background:var(--terra);transform:translateY(-3px);flex-shrink:0}
+  .avis-item.flip .meta .from::after{content:"";display:inline-block;width:18px;height:1px;background:#e8c89b;transform:translateY(-3px);flex-shrink:0}
   .avis-item.flip .quote{grid-column:5/13}
 
   /* ---------- 07 reserver — 2026 glassmorphism form ---------- */
